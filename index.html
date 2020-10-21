@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+	<title>Catch the Rubbish</title>
+    <meta type="description" content="Catch rubbish. You can use the keyboard, move the mouse or tilt your phone or tablet to move left and right">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"> 
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" href="assets/fonts.css" type="text/css">
+    <link rel="stylesheet" href="assets/playingfield.css" type="text/css">
+    <link rel="stylesheet" href="assets/textstyles.css" type="text/css">
+	
+</head>
+
+<body>
+    <header>
+        <h1></h1>
+    </header>
+    <div id="container" tabindex="-1">
+
+        <section id="intro" class="current">
+            <h1>Catch the Rubish</h1>
+            <p>Protect our planet from rubbish!</p>
+            <ul>
+                <li>Last score: <output>0</output></li>
+                <li>High score: <output>0</output></li>
+                <li><button id="instructionbutton">Instructions</button></li>
+                <li><button id="playbutton">Play</button></li>
+            </ul>
+        </section>
+
+        <section id="instructions">
+            <ul id="characters" data-countstart="2" data-newsprite="500">
+                <li class="introdeck">
+                    <h2>You are a BrightKid</h2>
+                    <img src="assets/koikiwi.png" width="72" height="100" id="player" data-increase="5">
+                    <p>Your job is to catch as many of the rubbish items as you can.</p>
+                    <p>You can use the cursor keys or move the mouse on the playfield <span id="orientation">- or simply tilt your mobile or tablet</span>.</p>
+                    <p>Failing to catch polluting rubbish or catching wrong ones costs energy. The game is over when you are out of energy.</p>
+                    <p><button class="next">More</button></p>
+                </li>
+
+                <li class="introdeck">
+                    <h2>Most polluting rubbish</h2>
+                    <p>Worth 20 energy points that you can win or lose.</p>
+                    <ul>
+                        <li><img src="assets/plasticBottle.png" class="sprite" alt="Polluting Plastic" data-collision="energy:20" data-type="good"></li>
+                        <li><img src="assets/beverageCan.png" class="sprite" alt="Polluting Can" data-collision="energy:20" data-type="good"></li>
+                        <li><img src="assets/plasticCups.png" class="sprite" alt="Canvas" data-collision="energy:20" data-type="good"></li>
+                    </ul>
+                    <h2>Polluting rubbish</h2>
+                        <p>Worth 10 energy points that you can win or lose.</p>
+                    <ul>
+                        <li>
+                            <img src="assets/cupAndStrow.png" class="sprite" alt="Semantic Markup" data-collision="energy:10" data-type="good"></li>
+                        <li>
+                            <img src="assets/plasticBag.png" class="sprite" alt="History" data-collision="energy:10" data-type="good"></li>
+                    </ul>
+                    <p><button class="next">More</button></p>
+                </li>
+
+                <li class="introdeck">
+                    <h2>Lesser polluting rubbish</h2>
+                    <p>These are also your cleaning target. Worth 5 energy points that you can win or lose.</p>
+                    <ul>
+                        <li><img src="assets/paperBag.png" class="sprite" alt="Drag and Drop" data-collision="energy:5" data-type="good"></li>
+                        <li><img src="assets/glassBottle.png" class="sprite" alt="Menus" data-collision="energy:5" data-type="good"></li>
+                    </ul>
+                    <h2>Good for the environment</h2>
+                    <p>These are really not what you look to stop. Catching each will cost you 20 energy points.</p>
+                    <ul>
+	    	            <li><img src="assets/rainDrops.png" class="sprite" alt="WebGL" data-collision="energy:-20" data-type="bad"></li>
+                        <li><img src="assets/treeLeave1.png" class="sprite" alt="Media queries" data-collision="energy:-20" data-type="bad"></li>
+                        <li><img src="assets/treeLeave2.png" class="sprite" alt="File API" data-collision="energy:-20" data-type="bad"></li>
+                        <li><img src="assets/clouds.png" class="sprite" alt="SVG" data-collision="energy:-20" data-type="bad"></li>
+                        <li><img src="assets/birds.png" class="sprite" alt="Geolocation" data-collision="energy:-20" data-type="bad"></li>
+                    
+                    </ul>
+                    <p><button class="next">More</button></p>
+                </li>
+
+                <li class="introdeck">
+                    <h2>Related, but not your target</h2>
+                    <p>These are not natural in our environment, but are man made and required for our living or for improving our environment. Catching each will cost you 10 energy points.</p>
+                    <ul>
+	    	            <li><img src="assets/solarPanels.png" class="sprite" alt="Flash" data-collision="energy:-10" data-type="bad"></li>
+                        <li><img src="assets/windTurbine.png" class="sprite" alt="jQuery" data-collision="energy:-10" data-type="bad"></li>
+                        <li><img src="assets/house.png" class="sprite" alt="CSS" data-collision="energy:-10" data-type="bad"></li>
+                    </ul>
+                    <p><button class="endinstructions">Back to menu</button></p>
+                </li>
+            </ul>
+        </section>
+
+        <section id="playfield">
+            <div id="scoresinfo">
+                <div id="energy">Energy <output>100</output></div>
+                <div id="score">Score <output></output></div>
+            </div>
+            <canvas></canvas>
+        </section>
+
+        <section id="gameover">
+            <header>
+                <h1>Game over!</h1>
+            </header>
+            <p>Your score: <output></output></p>
+            <p class="message" data-highscore="New highscore!"></p>
+            <p><button id="replay">Play again</button></p>
+        </section>
+
+        <ul id="buttons" style="display: none;">
+            <li><button class="left">&nbsp;</button></li>
+             <li><button class="right">&nbsp;</button></li>
+        </ul>
+    </div>
+
+    <footer></footer>
+
+    <!-- JAVASCRIPT -->
+    <script src="assets/game.js"></script>
+
+    <div id="hoverpedia_bottom" class="hoverbox"></div>
+
+</body>
+</html>
