@@ -1,0 +1,127 @@
+* { 
+    margin: 0;
+    padding: 0;
+  }
+  body,html{
+      margin-top:0px;
+    height: 95%;
+  }
+  footer, section, header, aside, figure {
+    display: block;
+  }
+  li {
+    list-style: none;
+  }
+  #container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    max-width: 500px;
+    max-height: 700px;
+  }
+  
+  .playing #container { 
+    cursor: none;
+  }
+  
+  @media screen and (min-device-width: 700px) {
+    #container {
+      width: 40%;
+      min-width: 500px;
+      height: 90%;
+      margin: 0 auto;
+    }
+  }
+  #playfield, #gameover, #instructions, #intro {
+    position: absolute;
+    top: -900px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-transition: top 1s;
+    -moz-transition: top 1s;
+    -ms-transition: top 1s;
+    -o-transition: top 1s;
+    transition: top 1s;
+  }
+  #playfield.current, 
+  #gameover.current, 
+  #instructions.current, 
+  #intro.current {
+    top: 0;
+    -webkit-transition: top 1s;
+    -moz-transition: top 1s;
+    -ms-transition: top 1s;
+    -o-transition: top 1s;
+    transition: top 1s;
+  }
+  #characters li.introdeck {
+    opacity: 0;
+    left: -9000px;
+    position: absolute;
+    -webkit-transition: opacity 1s;
+    -moz-transition: opacity 1s;
+    -ms-transition: opacity 1s;
+    -o-transition: opacity 1s;
+    transition: opacity 1s;
+  }
+  #characters .current, #characters .introdeck {
+    width: 80%;
+    margin: 5px auto;
+  }
+  #characters .current ul {
+    margin: 5px 0;
+  }
+  #characters .current li {
+    display: inline;
+    padding-right: 10px;
+  }
+  #characters li.current {
+    opacity: 1;
+    left: 0;
+    -webkit-transition: opacity 1s;
+    -moz-transition: opacity 1s;
+    -ms-transition: opacity 1s;
+    -o-transition: opacity 1s;
+    transition: opacity 1s;
+  }
+  
+  
+  .right {
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+  }
+  .left {
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 20px;
+  }
+  canvas {
+    width: 100%;
+    height: 100%;
+  }
+  #scoresinfo {
+    position: absolute;
+    width: 100%;
+    padding: 5px 0;
+    background: rgb(76,76,76); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(102,102,102,1) 25%, rgba(71,71,71,1) 39%, rgba(44,44,44,1) 50%, rgba(0,0,0,1) 51%, rgba(17,17,17,1) 60%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(76,76,76,1)), color-stop(12%,rgba(89,89,89,1)), color-stop(25%,rgba(102,102,102,1)), color-stop(39%,rgba(71,71,71,1)), color-stop(50%,rgba(44,44,44,1)), color-stop(51%,rgba(0,0,0,1)), color-stop(60%,rgba(17,17,17,1)), color-stop(76%,rgba(43,43,43,1)), color-stop(91%,rgba(28,28,28,1)), color-stop(100%,rgba(19,19,19,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(76,76,76,1) 0%,rgba(89,89,89,1) 12%,rgba(102,102,102,1) 25%,rgba(71,71,71,1) 39%,rgba(44,44,44,1) 50%,rgba(0,0,0,1) 51%,rgba(17,17,17,1) 60%,rgba(43,43,43,1) 76%,rgba(28,28,28,1) 91%,rgba(19,19,19,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(76,76,76,1) 0%,rgba(89,89,89,1) 12%,rgba(102,102,102,1) 25%,rgba(71,71,71,1) 39%,rgba(44,44,44,1) 50%,rgba(0,0,0,1) 51%,rgba(17,17,17,1) 60%,rgba(43,43,43,1) 76%,rgba(28,28,28,1) 91%,rgba(19,19,19,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(76,76,76,1) 0%,rgba(89,89,89,1) 12%,rgba(102,102,102,1) 25%,rgba(71,71,71,1) 39%,rgba(44,44,44,1) 50%,rgba(0,0,0,1) 51%,rgba(17,17,17,1) 60%,rgba(43,43,43,1) 76%,rgba(28,28,28,1) 91%,rgba(19,19,19,1) 100%); /* IE10+ */
+    background: linear-gradient(top, rgba(76,76,76,1) 0%,rgba(89,89,89,1) 12%,rgba(102,102,102,1) 25%,rgba(71,71,71,1) 39%,rgba(44,44,44,1) 50%,rgba(0,0,0,1) 51%,rgba(17,17,17,1) 60%,rgba(43,43,43,1) 76%,rgba(28,28,28,1) 91%,rgba(19,19,19,1) 100%);
+  }
+  #energy, #score {
+    position: relative;
+    color: #fff;
+    padding-left: 20px;
+  }
+  #energy output, #score output {
+    position: absolute;
+    right: 20px;
+  }
